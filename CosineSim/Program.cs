@@ -1,40 +1,4 @@
-﻿// Example sentences
-#region test
-
-// using System.Diagnostics;
-
-// List<Dictionary<string, string>> data_list = new()
-// {
-// 			new Dictionary<string, string> {{"text", "PAYCOM (OPAY)"}, {"text2", "OPAY"}},
-// 			new Dictionary<string, string> {{"text", "Alat"}, {"text2", "ALAT by WEMA"}},
-// 			new Dictionary<string, string> {{"text", "Bowen Microfinance Bank"}, {"text2", "Bowen Microfinance Bank"}},
-// 			new Dictionary<string, string> {{"text", "Ecobank Nigeria"}, {"text2", "Ecobank Nigeria"}},
-// 			new Dictionary<string, string> {{"text", "Eyowo"}, {"text2", "EYOWO MICROFINANCE BANK"}},
-// 			new Dictionary<string, string> {{"text", "Hasal Microfinance Bank"}, {"text2", "Hasal Microfinance Bank"}},
-// 			new Dictionary<string, string> {{"text", "CEMCS Microfinance Bank"}, {"text2", "Guaranty Trust Bank"}},
-// 			new Dictionary<string, string> {{"text", "Access Bank (Diamond)"}, {"text2", "Diamond bank"}},
-// 			new Dictionary<string, string> {{"text", "Parkway - ReadyCash"}, {"text2", "ReadyCash (Parkway)"}}
-// 		};
-
-// foreach (var data in data_list)
-// {
-
-// 	string sentence1 = data["text"];
-// 	string sentence2 = data["text2"];
-
-// 	// Measure execution time using Stopwatch
-// 	Stopwatch stopwatch = Stopwatch.StartNew();
-// 	double finalSimilarity = CosineSimilarityCalculator
-// 		.CalculateFinalSimilarity(sentence1, sentence2);
-
-// 	Console.WriteLine("Sentence 1: " + sentence1);
-// 	Console.WriteLine("Sentence 2: " + sentence2);
-// 	Console.WriteLine("\nFinal Similarity: " + finalSimilarity + "\n");
-// 	Console.WriteLine("Execution Time: " + stopwatch.ElapsedMilliseconds + " ms\n");
-// }
-
-#endregion
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace CosineSim
 {
