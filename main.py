@@ -31,6 +31,16 @@ def preprocess_string(text: str) -> str:
 
 
 def calculate_word_match(sentence1: str, sentence2: str) -> int:
+    """
+    Calculates the number of matching words between two sentences.
+
+    Args:
+            sentence1 (str): The first sentence to compare.
+            sentence2 (str): The second sentence to compare.
+
+    Returns:
+            int: The number of matching words between the two sentences.
+    """
     # Tokenize both sentences
     words1 = set(WORD.findall(sentence1))
     words2 = set(WORD.findall(sentence2))
@@ -42,6 +52,16 @@ def calculate_word_match(sentence1: str, sentence2: str) -> int:
 
 
 def calculate_final_similarity(sentence1: str, sentence2: str) -> float:
+    """
+    Calculates the final similarity score between two sentences using cosine similarity and word match score.
+
+    Args:
+            sentence1 (str): The first sentence to compare.
+            sentence2 (str): The second sentence to compare.
+
+    Returns:
+            float: The final similarity score between the two sentences.
+    """
     # Calculate cosine similarity
     cosine_similarity = get_cosine_similarity(
         text_to_vector(sentence1), text_to_vector(sentence2)
