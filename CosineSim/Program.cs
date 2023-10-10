@@ -47,14 +47,16 @@ namespace CosineSim
 					{
 						// Save automatically
 						SaveMatchedData(databaseBankName, matchResults.ProviderId);
+						Console.WriteLine($"{databaseBankName} and {matchResults.ProviderBankName} were a perfect match.");
 						continue;
 					}
 
-					// Step 6: Prompt user to manually provide an ID
-					ManuallyProvideID(bankEntry);
+					// Step 6: Prompt before save
+					ConfirmBeforeSavingId(bankEntry, matchResults.ProviderId);
 				}
 
-				Console.WriteLine($"Current Bank Name: {databaseBankName}");
+				// Step 7: Prompt user to manually provide an ID
+				Console.WriteLine($"Current Bank Name: {databaseBankName}. No match was found.");
 				ManuallyProvideID(bankEntry);
 			}
 		}
@@ -100,6 +102,21 @@ namespace CosineSim
 			}
 
 			return null; // No suitable match found
+		}
+
+		private static void ConfirmBeforeSavingId(Bank bankEntry, string providerId)
+		{
+			Console.WriteLine("Do you want to save this match? (YES/NO): ");
+			string userInput = Console.ReadLine();
+
+			if (userInput?.Trim().Equals("YES", StringComparison.OrdinalIgnoreCase) == true)
+			{
+				SaveMatchedData(bankEntry.Id, providerId);
+			}
+			else
+			{
+				ManuallyProvideID(bankEntry);
+			}
 		}
 
 		private static void ManuallyProvideID(Bank bankEntry)
