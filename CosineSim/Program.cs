@@ -10,7 +10,7 @@ namespace CosineSim
 
 		public static async Task Main(string[] args)
 		{
-			// Step 1: Connect to the database and get banks with OCode as null
+			// Step 1: Connect to the database and get banks with OkraCode as null
 			var databaseBanksWithNullOCode = new List<Bank>
 			{
 
@@ -34,7 +34,7 @@ namespace CosineSim
 			{
 				string databaseBankName = bankEntry.Name;
 
-				// return a class with both the match and the similarity
+				// return a class with both the matchingName, the okraId and the similarity rating
 				var matchResults = FindSimilarMatch(databaseBankName, providerDictionary);
 
 				if (matchResults != null)
@@ -106,10 +106,10 @@ namespace CosineSim
 
 		private static void ConfirmBeforeSavingId(Bank bankEntry, string providerId)
 		{
-			Console.WriteLine("Do you want to save this match? (YES/NO): ");
+			Console.WriteLine("Do you want to save this match? (Y/N): ");
 			string userInput = Console.ReadLine();
 
-			if (userInput?.Trim().Equals("YES", StringComparison.OrdinalIgnoreCase) == true)
+			if (userInput?.Trim().Equals("Y", StringComparison.OrdinalIgnoreCase) == true)
 			{
 				SaveMatchedData(bankEntry.Id, providerId);
 			}
@@ -121,14 +121,19 @@ namespace CosineSim
 
 		private static void ManuallyProvideID(Bank bankEntry)
 		{
-			Console.WriteLine("Do you want to manually provide an ID for this match? (YES/NO): ");
+			Console.WriteLine("Do you want to manually provide an ID for this match? (Y/N): ");
 			string userInput = Console.ReadLine();
 
-			if (userInput?.Trim().Equals("YES", StringComparison.OrdinalIgnoreCase) == true)
+			if (userInput?.Trim().Equals("Y", StringComparison.OrdinalIgnoreCase) == true)
 			{
 				Console.WriteLine("Enter the ID (or leave empty for NULL): ");
 				string userProvidedId = Console.ReadLine();
 
+				if (string.IsNullOrEmpty(userProvidedId))
+				{
+					// save it as null. 
+					userProvidedId = null!;
+				}
 				SaveMatchedData(bankEntry.Id, userProvidedId);
 			}
 			else
